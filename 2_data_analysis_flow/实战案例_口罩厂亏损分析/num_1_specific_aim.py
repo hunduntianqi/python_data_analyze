@@ -29,6 +29,7 @@
 # 导入pandas库
 import pandas as pd
 
-# 读取csv文件
-mask_data = pd.read_csv(filepath_or_buffer='./需求数据/mask_data.csv', sep=';', encoding='utf-8', engine='python')
-print(mask_data)
+if __name__ == '__main__':
+    # 读取csv文件
+    mask_data = pd.read_csv(filepath_or_buffer='./需求数据/mask_data.csv', sep=",", encoding='utf-8', engine='python')
+    print(mask_data)

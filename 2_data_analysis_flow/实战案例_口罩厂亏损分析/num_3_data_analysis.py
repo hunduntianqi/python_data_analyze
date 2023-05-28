@@ -6,11 +6,14 @@
                 指按照某项规则对数据进行分组, 接着对分完组的数据执行总结性统计的操作（比如求和、求均值）, 该操作返回的是一个
                 Series对象
                 单层分组聚合:指针对某一个组进行操作
-                    df.groupby(by)['列索引'].mean()
-                    单层分组操作 >> DataFrame.groupby(by) >> 参数 by 代表了想要对那一列数据进行分组操作
-                    聚合操作 >> ['列索引'].mean()
+                    df.groupby(by='列名', as_index=False)['列索引'].mean()
+                    单层分组操作 ==> DataFrame.groupby(by='列名', as_index=False):
+                        by ==> 代表了想要对那一列数据进行分组操作
+                        as_index ==> 选择是否包含自带行的索引, False为包含, True则为使用分组列名作为行索引(默认)
+                    聚合操作 ==> ['列索引'].mean():
+                        指定要对那列数据进行聚合操作
                 多层分组聚合:指针对多个分组进行操作
-                    df.groupby(by)['列索引1', '列索引2', ...].mean()
+                    df.groupby(by=['列名1', '列名2', ...], as_index=False)['列索引'].mean()
                     分组的顺序和列表中的参数是对应的(从左往右依次拆分)
                     s.unstack()方法:可以将一个多层分组聚合后的 Series 对象转变成 DataFrame 对象, 是针对多层分组聚合后
                                     的 Series 对象来使用的, 作用就是将其索引的最后一列转变成 DataFrame 对象的列索引，而
@@ -72,7 +75,7 @@ plt.rcParams['font.family'] = ['KaiTi']
 '''数据分析'''
 '''分组聚合查询'''
 # 分组聚合查询获取每月的销售额总数
-month_total = mask_clean.groupby('月份')['销售额'].sum()
+month_total = mask_clean.groupby(by='月份', as_index=False)['销售额'].sum()
 print(month_total)
 # 分组聚合查询获取每月的单价平均值
 price_average = mask_clean.groupby('月份')['单价'].mean()
@@ -80,9 +83,11 @@ print(price_average)
 # 分组查询各月订单量总数
 order_total_month = mask_clean.groupby('月份')['订单量'].sum()
 # 分组聚合查询各月各省订单量总数, 并转化为DataFrame对象
-order_total_site_month = mask_clean.groupby(['省', '月份'])['订单量'].sum().unstack()
+order_total_site_month = mask_clean.groupby(by=['省', '月份'], as_index=False)['订单量'].sum().unstack()
+print("=======================")
 print(order_total_site_month)
 order_total_month_site = mask_clean.groupby(['月份', '省'])['订单量'].sum().unstack()
+print("=======================")
 print(order_total_month_site)
 
 '''数据可视化-绘制折线图'''

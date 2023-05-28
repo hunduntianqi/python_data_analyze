@@ -71,7 +71,7 @@
 import pandas as pd
 
 # 读取数据csv文件
-mask_data = pd.read_csv(filepath_or_buffer='./需求数据/mask_data.csv', sep=';', encoding='utf-8', engine='python')
+mask_data = pd.read_csv(filepath_or_buffer='./需求数据/mask_data.csv', sep=',', encoding='utf-8', engine='python')
 # print(mask_data)
 # 使用info()方法查看mask_data对象的基本信息
 print(mask_data.info())

@@ -16,8 +16,8 @@
                     pd.Series(np.array([1, 2]))
                 5. 根据字符串创建Series对象
                     ps.Series(字符串数据)
-            Series.index: 可以获取Series对象的索引数据
-            Series.values: 可以获取Series对象的数据内容
+            Series.index: 可以获取Series对象的索引数据, 返回值可以看做一个列表
+            Series.values: 可以获取Series对象的数据内容, 返回值可以看做一个列表
 """
 # 导入pandas库
 import pandas as pd
@@ -25,9 +25,9 @@ import pandas as pd
 import numpy as np
 
 # 根据列表创建Series对象, 默认索引-起始为0
-serobj = pd.Series(['郭鹏涛', '陈欣妮', '郭会军', '任杏好', '郭鹏强'])
+serobj = pd.Series(['郭鹏涛', '陈欣妮', '郭会军', '任杏好', '郭鹏强'], index=[1, 2, 3, 4, 5])
 print(serobj.index)  # ==> RangeIndex(start=0, stop=5, step=1)
-print(serobj.values)  # ==> ['郭鹏涛' '陈欣妮' '郭会军' '任杏好' '郭鹏强']
+print(serobj.values[0])  # ==> ['郭鹏涛' '陈欣妮' '郭会军' '任杏好' '郭鹏强']
 # 打印Series对象
 print(serobj)
 '''

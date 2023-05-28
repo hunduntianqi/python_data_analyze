@@ -23,7 +23,7 @@
                 encoding: 要读取文件的编码格式, 参数类型为字符串
                 engine: 指定为'python'即可, 否则会报错
                 该方法返回一个DataFrame对象
-        DatFrame.info()方法:
+        DataFrame.info()方法:
             可以帮助我们提炼出DataFrame对象的基本数据信息, 其中包括:整体数据的总行数、
             各列数据类型统计、各列的列名、各列总共有多少非空数据、表格占用的系统空间等
         isna()方法:
@@ -34,7 +34,7 @@
         DataFrame.tail()方法: 默认可以查看数据的后 5 行
         dropna()方法:
             使用dropna()方法可以直接删除DataFrame对象和Series对象中的缺失值数据
-            注意: 该方法不会改变原来DataFrame对象的值, 会返回一个新的DataFrame对象
+            注意: 该方法不会改变原来DataFrame对象的值, 会返回一个新的DataFrame对象, 要注意变量接收返回值
             指定列索引删除缺失值:
                 DataFrame.dropna(subset=[列索引1, 列索引2, ...])
 """
